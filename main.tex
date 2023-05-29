@@ -12,7 +12,7 @@
 \usepackage[english]{babel}
 \usepackage{csquotes}
 \usepackage{lipsum}
-
+\usepackage{nomencl}
 % % Uncomment using "Ctrl + /" (/ on numpad):
 % % Customizing headers and footers:
 % \fancypagestyle{custom}{%
@@ -54,19 +54,28 @@
 % The document:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
-
+\makenomenclature 
 \maketitle
 \begin{center}
     Words: \quickwordcount{main}\\ % Word count 
     Pages: \pageref{LastPage} % Page count
 \end{center}
 
+\printnomenclature
+
 \section{Introduction}
 Aircraft flight controllers are designed and developed to comply with various time, safety and performance constraints. The development process often involves adopting Handling Qualities requirements, aerodynamic model validation, classical control theory and nonlinear implementation and verification within a high-fidelity simulation model (HIL or SITL). The following document attempts at capturing the various guidelines and best practices that affect the development of aircraft control laws within the various constraints that are typical in most modern flight control development programs.
+\nomenclature[]{HIL}{Hardware-in-the-loop}
+\nomenclature[]{SITL}{Software-in-the-loop}
 
 \section{Development Process}
 \subsection{Handling Qualities Requirements}
 \subsection{Integration of the Aerodynamics model}
+\subsubsection{Determination of the Down-wash angle}
+The determination of the down-wash angle on a wing due to canard flow or the wing impact on the horizontal stabilizer can be determined in the wind tunnel through component-wise testing at various \nomenclature[]{}{}AoA. This is even more important for the impact of the down-wash angle for multiple effectors along a wing span which could have an impact on the overall lift and drag generation. 
+
+
+\subsubsection{Translation of the aerodynamic data to dynamic stability modes}
 \subsection{Controller Robustness, Performance and Aircraft Response}
 \section{Example}
 
